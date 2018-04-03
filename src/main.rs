@@ -16,7 +16,7 @@ fn main() {
     router.post("/gcd", post_gcd, "gcd");
 
     println!("Serving on http://localhost:3000...");
-    Iron::new(get_form).http("localhost:3000").unwrap();
+    Iron::new(router).http("localhost:3000").unwrap();
 }
 
 // a begining with _ tells Rust that we expect the variable tobe unused...
@@ -28,7 +28,7 @@ fn get_form(_request: &mut Request) -> IronResult<Response> {
         <title>GCD Calculation</title>
         <form action="/gcd" method="post">
             <input type="text" name="n" />
-            <input type="text" name="m" />
+            <input type="text" name="n" />
             <button type="submit">Compute GCD</button>
         </form>
     "#);
